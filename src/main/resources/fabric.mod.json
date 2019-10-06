@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "gui_helpful",
+  "version": "${version}",
+
+  "name": "Helpful Gui",
+  "description": "Makes /help a lot more useful",
+  "authors": [
+    "AshIndigo", "Stapleton"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Stapleton/Helpful-GUI/",
+    "sources": "https://github.com/Stapleton/Helpful-GUI/tree/fabric/1.14"
+  },
+
+  "license": "IDFK",
+  "icon": "assets/helpfulgui/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ashindigo.guihelpful.HelpfulGui"
+    ],
+    "client": [
+      "com.ashindigo.guihelpful.HelpfulGuiClient"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}
