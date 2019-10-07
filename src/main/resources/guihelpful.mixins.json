@@ -1,11 +1,11 @@
 {
   "required": true,
-  "package": "net.fabricmc.example.mixin",
+  "package": "com.ashindigo.guihelpful.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "ChatScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

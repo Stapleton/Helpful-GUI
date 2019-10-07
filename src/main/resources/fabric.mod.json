@@ -18,16 +18,16 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.ashindigo.guihelpful.HelpfulGui"
-    ],
-    "client": [
-      "com.ashindigo.guihelpful.HelpfulGuiClient"
-    ]
+    "cotton-client-commands": ["com.ashindigo.guihelpful.HelpfulCommandHandler"]
   },
+  "mixins": [
+    "guihelpful.mixins.json"
+  ],
 
   "depends": {
     "fabricloader": ">=0.4.0",
-    "fabric": "*"
+    "fabric": "*",
+    "libgui":">=1.3.2",
+    "cotton-client-commands": "*"
   }
 }
