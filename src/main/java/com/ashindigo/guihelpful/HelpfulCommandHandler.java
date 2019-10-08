@@ -5,16 +5,11 @@ import com.ashindigo.guihelpful.gui.HelpfulGui;
 import com.ashindigo.guihelpful.gui.HelpfulScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.tree.CommandNode;
 import io.github.cottonmc.clientcommands.ArgumentBuilders;
 import io.github.cottonmc.clientcommands.ClientCommandPlugin;
 import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.server.command.CommandSource;
-import net.minecraft.server.network.ServerLoginNetworkHandler;
 import net.minecraft.text.TranslatableText;
-
-import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class HelpfulCommandHandler implements ClientCommandPlugin {
@@ -31,5 +26,6 @@ public class HelpfulCommandHandler implements ClientCommandPlugin {
         clientDispatcher.register(ArgumentBuilders.literal("helpful").executes(
                 HelpfulCommandHandler::run
         ));
+        DescriptionManager.addEntry("helpful", new TranslatableText("command.helpful.description"));
     }
 }

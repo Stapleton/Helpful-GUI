@@ -10,6 +10,7 @@ public class DescriptionManager {
 
     private static final HashMap<String, Text> descMap = new HashMap<>();
 
+    @SuppressWarnings("unused")
     public static ImmutableMap<String, Text> getDescMap() {
         return ImmutableMap.copyOf(descMap);
     }

@@ -5,7 +5,8 @@
   "mixins": [
   ],
   "client": [
-    "ChatScreenMixin"
+    "ChatScreenMixin",
+    "CommandCacheMixin"
   ],
   "injectors": {
     "defaultRequire": 1
