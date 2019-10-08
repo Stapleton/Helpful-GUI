@@ -1,10 +1,9 @@
 package com.ashindigo.guihelpful.api;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.tree.CommandNode;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.CommandSource;
-import net.minecraft.server.command.ServerCommandSource;
 
 import java.util.ArrayList;
 
@@ -17,15 +16,16 @@ public class CommandListManager {
     }
 
     public static void addEntry(CommandInfo<? extends CommandSource> command) {
-        commands.add(command);
+        if (!commands.contains(command)) {
+            commands.add(command);
+        }
     }
 
-    public static void initMainList() {
-        if (MinecraftClient.getInstance().getServer() != null) {
-            for (CommandNode<? extends CommandSource> node : MinecraftClient.getInstance().getServer().getCommandManager().getDispatcher().getRoot().getChildren()) {
-                CommandInfo<ServerCommandSource> commandInfo = new CommandInfo<>(node, MinecraftClient.getInstance().getServer().getCommandManager().getDispatcher());
-                commands.add(commandInfo);
-            }
+    public static void initMainList(CommandDispatcher<CommandSource> dispatcher) {
+        commands.clear();
+        for (CommandNode<? extends CommandSource> node : dispatcher.getRoot().getChildren()) {
+            CommandInfo<CommandSource> commandInfo = new CommandInfo<>(node, dispatcher);
+            addEntry(commandInfo);
         }
     }
 }

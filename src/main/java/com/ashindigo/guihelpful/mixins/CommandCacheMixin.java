@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CommandCache.class)
-public abstract class CommandCacheMixin {
+public class CommandCacheMixin {
 
     @Final
     @Shadow(remap = false)
@@ -22,7 +22,6 @@ public abstract class CommandCacheMixin {
 
     @Inject(method = "build", at = @At("RETURN"), remap = false)
     private static void build(CallbackInfo cbi) {
-        CommandListManager.initMainList();
         for (CommandNode<CottonClientCommandSource> node : DISPATCHER.getRoot().getChildren()) {
             CommandListManager.addEntry(new CommandInfo<>(node, DISPATCHER));
         }

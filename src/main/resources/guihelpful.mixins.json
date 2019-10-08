@@ -6,7 +6,8 @@
   ],
   "client": [
     "ChatScreenMixin",
-    "CommandCacheMixin"
+    "CommandCacheMixin",
+    "ClientPlayNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

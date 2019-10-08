@@ -15,7 +15,7 @@ public class CommandInfoGui extends LightweightGuiDescription {
 
     @SuppressWarnings("unchecked")
     public CommandInfoGui(CommandInfo commandInfo) {
-        if (MinecraftClient.getInstance().getServer() != null && MinecraftClient.getInstance().getNetworkHandler() != null) {
+        if (MinecraftClient.getInstance().getNetworkHandler() != null) {
             WGridPanel root = new WGridPanel();
             setRootPanel(root);
             root.setSize(512, 240);
