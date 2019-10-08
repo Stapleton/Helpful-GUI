@@ -1,8 +1,8 @@
 package com.ashindigo.guihelpful;
 
 import com.ashindigo.guihelpful.api.DescriptionManager;
-import com.ashindigo.guihelpful.gui.HelpfulGui;
-import com.ashindigo.guihelpful.gui.HelpfulScreen;
+import com.ashindigo.guihelpful.gui.HelpfulShowAllGui;
+import com.ashindigo.guihelpful.gui.HelpfulShowAllScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import io.github.cottonmc.clientcommands.ArgumentBuilders;
@@ -17,7 +17,7 @@ public class HelpfulCommandHandler implements ClientCommandPlugin {
     private static boolean ranOnce = false;
 
     private static int run(CommandContext<CottonClientCommandSource> source) {
-        MinecraftClient.getInstance().openScreen(new HelpfulScreen(new HelpfulGui()));
+        MinecraftClient.getInstance().openScreen(new HelpfulShowAllScreen(new HelpfulShowAllGui()));
         return 1;
     }
 
