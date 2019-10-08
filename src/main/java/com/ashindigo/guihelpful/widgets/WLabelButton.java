@@ -1,6 +1,5 @@
 package com.ashindigo.guihelpful.widgets;
 
-import com.mojang.brigadier.tree.CommandNode;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import io.github.cottonmc.cotton.gui.widget.WButton;
 
@@ -21,10 +20,10 @@ public class WLabelButton extends WButton {
 
     /**
      * Overridden paintForeground that'll show my label
-     * @param x
-     * @param y
-     * @param mouseX
-     * @param mouseY
+     * @param x X Coordinate
+     * @param y Y Coordinate
+     * @param mouseX Mouse X
+     * @param mouseY Mouse y
      */
     @Override
     public void paintForeground(int x, int y, int mouseX, int mouseY) {

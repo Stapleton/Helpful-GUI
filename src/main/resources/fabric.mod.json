@@ -18,7 +18,8 @@
 
   "environment": "*",
   "entrypoints": {
-    "cotton-client-commands": ["com.ashindigo.guihelpful.HelpfulCommandHandler"]
+    "cotton-client-commands": ["com.ashindigo.guihelpful.HelpfulCommandHandler"],
+    "client": ["com.ashindigo.guihelpful.HelpfulClientMain"]
   },
   "mixins": [
     "guihelpful.mixins.json"
