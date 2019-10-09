@@ -12,11 +12,11 @@ group = project.maven_group
 
 repositories {
 	maven {
-		name = "Cotton"
+		name = "CottonMC-Release"
 		url = "http://server.bbkr.space:8081/artifactory/libs-release/"
 	}
 	maven {
-		name = 'CottonMC'
+		name = 'CottonMC-Snapshot'
 		url = 'http://server.bbkr.space:8081/artifactory/libs-snapshot'
 	}
 }
