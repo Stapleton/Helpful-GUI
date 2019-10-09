@@ -6,7 +6,6 @@
   ],
   "client": [
     "ChatScreenMixin",
-    "CommandCacheMixin",
     "ClientPlayNetworkHandlerMixin"
   ],
   "injectors": {

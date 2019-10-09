@@ -1,5 +1,6 @@
 package com.ashindigo.guihelpful.mixins;
 
+import com.ashindigo.guihelpful.gui.AbstractHelpfulScreen;
 import com.ashindigo.guihelpful.gui.HelpfulShowAllScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -13,7 +14,7 @@ public class ChatScreenMixin {
 
     @Inject(method = "keyPressed", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;openScreen(Lnet/minecraft/client/gui/screen/Screen;)V"), cancellable = true)
     private void onKeyPressed(CallbackInfoReturnable<Boolean> ci) {
-        if (MinecraftClient.getInstance().currentScreen instanceof HelpfulShowAllScreen) {
+        if (MinecraftClient.getInstance().currentScreen instanceof AbstractHelpfulScreen) {
             ci.setReturnValue(true);
             ci.cancel();
         }

@@ -21,10 +21,11 @@ public class CommandListManager {
         }
     }
 
-    public static void initMainList(CommandDispatcher<CommandSource> dispatcher) {
+    @SuppressWarnings("unchecked") // Shut
+    public static void initMainList(CommandDispatcher<CommandSource> dispatcher, CommandSource source) {
         commands.clear();
         for (CommandNode<? extends CommandSource> node : dispatcher.getRoot().getChildren()) {
-            CommandInfo<CommandSource> commandInfo = new CommandInfo<>(node, dispatcher);
+            CommandInfo<? extends CommandSource> commandInfo = new CommandInfo<>((CommandNode<CommandSource>) node, dispatcher, source);
             addEntry(commandInfo);
         }
     }

@@ -11,7 +11,7 @@ import org.apache.commons.lang3.text.WordUtils;
  * Custom WLabel that supports word wrapping
  */
 public class WWrappedLabel extends WLabel {
-    private int width;
+    private final int width;
 
     public WWrappedLabel(Text descT, int color, int width) {
         super(descT, color);

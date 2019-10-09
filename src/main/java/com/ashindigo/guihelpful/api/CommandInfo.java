@@ -7,27 +7,31 @@ import net.minecraft.text.TranslatableText;
 
 public class CommandInfo<S extends CommandSource> {
 
-    private final CommandNode<? extends CommandSource> commandNode;
-    private final CommandDispatcher<S> dispatcher;
+    private String name;
+    private String[] usage;
 
-    public CommandInfo(CommandNode<? extends CommandSource> commandNode, CommandDispatcher<S> dispatcher) {
-        this.commandNode = commandNode;
-        this.dispatcher = dispatcher;
-        DescriptionManager.addEntry(commandNode.getName(), new TranslatableText("command." + commandNode.getName() + ".description"));
+    public CommandInfo(String name, String[] usage) {
+        this.name = name;
+        this.usage = usage;
+        DescriptionManager.addEntry(getName(), new TranslatableText("command." + getName() + ".description"));
     }
 
-    public CommandNode<? extends CommandSource> getCommandNode() {
-        return commandNode;
+    public CommandInfo(CommandNode<S> commandNode, CommandDispatcher<S> dispatcher, S source) {
+        this(commandNode.getName(), dispatcher.getAllUsage(commandNode, source, false));
     }
 
-    public CommandDispatcher<S> getDispatcher() {
-        return dispatcher;
+    public String getName() {
+        return name;
+    }
+
+    public String[] getUsage() {
+        return usage;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof CommandInfo) {
-            return commandNode.equals(((CommandInfo) obj).getCommandNode());
+            return getName().equals(((CommandInfo) obj).getName());
         }
         return false;
     }
