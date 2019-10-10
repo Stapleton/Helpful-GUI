@@ -9,46 +9,16 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class CommandCategoryManager {
-    private static final TreeMap<Identifier, CommandCategory> categoryList = new TreeMap<>();
 
-    private static final ArrayList<String> clientNames = new ArrayList<>();
-    
     public static final Identifier VANILLACATEGORY = new Identifier(HelpfulCommandHandler.MODID, "vanilla");
     public static final Identifier CLIENTCATEGORY = new Identifier(HelpfulCommandHandler.MODID, "client");
+    public static final Identifier MODCATEGORY = new Identifier(HelpfulCommandHandler.MODID, "modded");
+    private static final TreeMap<Identifier, CommandCategory> categoryList = new TreeMap<>();
+    private static final ArrayList<String> vanillaNameList = new ArrayList<>();
+    private static final ArrayList<String> clientNames = new ArrayList<>();
 
-    public static void initMainCategories() {
-        categoryList.clear();
-        CommandCategory vanillaCategory = new CommandCategory(new TranslatableText("command.category.vanilla"));
-        addCategory(VANILLACATEGORY, vanillaCategory);
-        CommandCategory clientCategory = new CommandCategory(new TranslatableText("command.category.client"));
-        addCategory(CLIENTCATEGORY, clientCategory);
-        setupVanillaCategory();
-        setupClientCategory();
-    }
-
-    public static void addCategory(Identifier key, CommandCategory category) {
-        if (!categoryList.containsKey(key)) {
-            categoryList.put(key, category);
-        }
-    }
-
-    public static void addCommandToCategory(Identifier key, CommandInfo info) {
-        if (categoryList.containsKey(key)) {
-            categoryList.put(key, categoryList.get(key).addCommand(info));
-        }
-    }
-
-    public static CommandCategory getCategory(Identifier key) {
-        return categoryList.get(key);
-    }
-
-    public static ImmutableMap<Identifier, CommandCategory> getCategoryList() {
-        return ImmutableMap.copyOf(categoryList);
-    }
-
-    private static void setupVanillaCategory() {
+    static {
         // I refuse to comment on this
-        ArrayList<String> vanillaNameList = new ArrayList<>();
         vanillaNameList.add("advancement");
         vanillaNameList.add("ban");
         vanillaNameList.add("ban-ip");
@@ -124,6 +94,7 @@ public class CommandCategoryManager {
         vanillaNameList.add("tickingarea");
         vanillaNameList.add("time");
         vanillaNameList.add("title");
+        vanillaNameList.add("tm");
         vanillaNameList.add("toggledownfall");
         vanillaNameList.add("tp");
         vanillaNameList.add("transferserver");
@@ -135,11 +106,51 @@ public class CommandCategoryManager {
         vanillaNameList.add("worldbuilder");
         vanillaNameList.add("wsserver");
         vanillaNameList.add("xp");
+    }
+
+    public static void initMainCategories() {
+        categoryList.clear();
+        CommandCategory vanillaCategory = new CommandCategory(new TranslatableText("command.category.vanilla"));
+        addCategory(VANILLACATEGORY, vanillaCategory);
+        CommandCategory clientCategory = new CommandCategory(new TranslatableText("command.category.client"));
+        addCategory(CLIENTCATEGORY, clientCategory);
+        CommandCategory modCategory = new CommandCategory(new TranslatableText("command.category.mods"));
+        addCategory(MODCATEGORY, modCategory);
+        setupVanillaCategory();
+        setupClientCategory();
+        setupModdedCategory();
+    }
+
+    public static void addCategory(Identifier key, CommandCategory category) {
+        if (!categoryList.containsKey(key)) {
+            categoryList.put(key, category);
+        }
+    }
+
+    public static void addCommandToCategory(Identifier key, CommandInfo info) {
+        if (categoryList.containsKey(key)) {
+            categoryList.put(key, categoryList.get(key).addCommand(info));
+        }
+    }
+
+    public static CommandCategory getCategory(Identifier key) {
+        return categoryList.get(key);
+    }
+
+    public static ImmutableMap<Identifier, CommandCategory> getCategoryList() {
+        return ImmutableMap.copyOf(categoryList);
+    }
+
+    private static void setupVanillaCategory() {
         CommandListManager.getCommands().stream().filter(info -> vanillaNameList.contains(info.getName())).forEach(info -> addCommandToCategory(VANILLACATEGORY, info));
     }
 
     private static void setupClientCategory() {
         CommandListManager.getCommands().stream().filter(info -> clientNames.contains(info.getName())).forEach(info -> addCommandToCategory(CLIENTCATEGORY, info));
+    }
+
+    private static void setupModdedCategory() {
+        CommandListManager.getCommands().stream().filter(info -> !vanillaNameList.contains(info.getName())).forEach(info -> addCommandToCategory(MODCATEGORY, info));
     }
 
     public static void addClientCommandName(String name) {
