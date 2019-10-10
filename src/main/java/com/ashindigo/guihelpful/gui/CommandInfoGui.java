@@ -40,8 +40,7 @@ public class CommandInfoGui extends LightweightGuiDescription {
             WWrappedLabel desc = new WWrappedLabel(descT, 0x404040, 105);
             root.add(desc, 0, 12);
             WButton back = new WButton(new LiteralText("Back"));
-            back.setOnClick(() -> MinecraftClient.getInstance().openScreen(new AbstractHelpfulScreen(prevGui) {
-            }));
+            back.setOnClick(() -> MinecraftClient.getInstance().openScreen(new HelpfulScreen(prevGui)));
             root.add(back, 8, 14, 14, 7);
             root.validate(this);
         }

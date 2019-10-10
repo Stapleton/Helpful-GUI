@@ -1,5 +1,6 @@
 {
-  "command.category.vanilla": "Vanilla",
+  "command.category.vanilla": "Vanilla Commands",
+  "command.category.client": "Client Commands",
   "command.helpful.description": "This GUI",
   "command.help.description": "The help command will provide a list of commands if given no arguments, if given a command it will show that commands arguments",
   "command.give.description": "Gives an item to the specified target(s)"

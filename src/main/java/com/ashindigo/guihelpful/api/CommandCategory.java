@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class CommandCategory {
 
     private final ArrayList<CommandInfo> commands = new ArrayList<>();
-    private Text name;
+    private final Text name;
 
     public CommandCategory(Text name) {
         this.name = name;
@@ -18,8 +18,9 @@ public class CommandCategory {
         return name;
     }
 
-    public void addCommand(CommandInfo info) {
+    public CommandCategory addCommand(CommandInfo info) {
         commands.add(info);
+        return this;
     }
 
     public ImmutableList<CommandInfo> getCommands() {

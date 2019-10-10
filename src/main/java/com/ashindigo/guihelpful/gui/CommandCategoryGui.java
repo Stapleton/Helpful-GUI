@@ -20,7 +20,7 @@ public class CommandCategoryGui extends LightweightGuiDescription {
         root.setSize(256, 240);
         BiConsumer<CommandInfo<? extends CommandSource>, WLabelButton> configurator = (CommandInfo<? extends CommandSource> command, WLabelButton button) -> {
             button.setText(command.getName());
-            button.setOnClick(() -> MinecraftClient.getInstance().openScreen(new CommandInfoScreen(new CommandInfoGui(command, this))));
+            button.setOnClick(() -> MinecraftClient.getInstance().openScreen(new HelpfulScreen(new CommandInfoGui(command, this))));
         };
         WListPanel list = new WListPanel(commandCategory.getCommands(), WLabelButton.class, WLabelButton::new, configurator);
         root.add(list, 0, 0, 14, 14);

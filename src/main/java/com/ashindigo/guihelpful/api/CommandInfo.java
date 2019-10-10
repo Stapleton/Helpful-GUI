@@ -7,8 +7,8 @@ import net.minecraft.text.TranslatableText;
 
 public class CommandInfo<S extends CommandSource> {
 
-    private String name;
-    private String[] usage;
+    private final String name;
+    private final String[] usage;
 
     public CommandInfo(String name, String[] usage) {
         this.name = name;

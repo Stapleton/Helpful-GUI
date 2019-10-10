@@ -2,34 +2,35 @@
   "schemaVersion": 1,
   "id": "gui_helpful",
   "version": "${version}",
-
   "name": "Helpful Gui",
   "description": "Makes /help a lot more useful",
   "authors": [
-    "AshIndigo", "Stapleton"
+    "AshIndigo",
+    "Stapleton"
   ],
   "contact": {
     "homepage": "https://github.com/Stapleton/Helpful-GUI/",
     "sources": "https://github.com/Stapleton/Helpful-GUI/tree/fabric/1.14",
     "issues": "https://github.com/Stapleton/Helpful-GUI/issues"
   },
-
   "license": "IDFK",
   "icon": "assets/gui_helpful/icon.png",
-
   "environment": "client",
   "entrypoints": {
-    "cotton-client-commands": ["com.ashindigo.guihelpful.HelpfulCommandHandler"]
+    "cotton-client-commands": [
+      "com.ashindigo.guihelpful.HelpfulCommandHandler"
+    ]
   },
   "mixins": [
     "guihelpful.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*",
-    "libgui":">=1.3.2",
+    "libgui": ">=1.3.2",
     "cotton-client-commands": "*"
   },
-  "custom":{"modmenu:clientsideOnly":true}
+  "custom": {
+    "modmenu:clientsideOnly": true
+  }
 }
