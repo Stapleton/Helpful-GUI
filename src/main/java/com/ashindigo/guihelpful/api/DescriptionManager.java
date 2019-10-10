@@ -4,13 +4,12 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class DescriptionManager {
 
-    private static final HashMap<String, Text> descMap = new HashMap<>();
+    private static final TreeMap<String, Text> descMap = new TreeMap<>();
 
-    @SuppressWarnings("unused")
     public static ImmutableMap<String, Text> getDescMap() {
         return ImmutableMap.copyOf(descMap);
     }

@@ -20,7 +20,6 @@ import java.util.function.BiConsumer;
 
 public class CommandInfoGui extends LightweightGuiDescription {
 
-    @SuppressWarnings("unchecked")
     public CommandInfoGui(CommandInfo commandInfo, GuiDescription prevGui) {
         if (MinecraftClient.getInstance().getNetworkHandler() != null) {
             WGridPanel root = new WGridPanel();

@@ -6,10 +6,10 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class CommandCategoryManager {
-    private static final HashMap<Identifier, CommandCategory> categoryList = new HashMap<>();
+    private static final TreeMap<Identifier, CommandCategory> categoryList = new TreeMap<>();
 
     private static final ArrayList<String> clientNames = new ArrayList<>();
     

@@ -8,10 +8,10 @@ import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WListPanel;
 import net.minecraft.client.MinecraftClient;
 
-import java.util.ArrayList;
 import java.util.function.BiConsumer;
 
 public class HelpfulCategoryGui extends LightweightGuiDescription {
+
     public HelpfulCategoryGui() {
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
@@ -20,7 +20,7 @@ public class HelpfulCategoryGui extends LightweightGuiDescription {
             button.setText(commandCategory.getName().asFormattedString());
             button.setOnClick(() -> MinecraftClient.getInstance().openScreen(new HelpfulScreen(new CommandCategoryGui(commandCategory))));
         };
-        WListPanel<CommandCategory, WLabelButton> list = new WListPanel<>(new ArrayList<>(CommandCategoryManager.getCategoryList().values()), WLabelButton.class, WLabelButton::new, configurator);
+        WListPanel<CommandCategory, WLabelButton> list = new WListPanel<>(CommandCategoryManager.getCategoryList().values().asList(), WLabelButton.class, WLabelButton::new, configurator);
         root.add(list, 0, 0, 14, 14);
         root.validate(this);
     }

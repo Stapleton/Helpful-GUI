@@ -21,10 +21,9 @@ public class WWrappedLabel extends WLabel {
     @Override
     public void paintBackground(int x, int y) {
         String translated = text.asFormattedString();
-        int i = 0;
-        for (String str : WordUtils.wrap(translated, width).split(SystemUtils.LINE_SEPARATOR)) {
-            ScreenDrawing.drawString(str, x, y + (10 * i), LibGuiClient.config.darkMode ? darkmodeColor : color);
-            i++;
+        String[] split = WordUtils.wrap(translated, width).split(SystemUtils.LINE_SEPARATOR);
+        for (int i = 0; i < split.length; i++) {
+            ScreenDrawing.drawString(split[i], x, y + (10 * i), LibGuiClient.config.darkMode ? darkmodeColor : color);
         }
     }
 }
